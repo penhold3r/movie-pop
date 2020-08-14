@@ -1,0 +1,37 @@
+@import 'includes/variables';
+@import 'utils/buttons';
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+}
+
+body {
+	background: $dark;
+	color: $light;
+	font-family: 'Nunito', sans-serif;
+
+	main {
+		display: flex;
+		flex-direction: column;
+		margin: 0 auto;
+		max-width: $max-width;
+		min-height: 100vh;
+
+		.container {
+			display: flex;
+			flex-grow: 1;
+			padding: 0 1rem;
+		} /* .container */
+	} /* main */
+} /* body */
+
+@import 'components/header';
+@import 'components/home-page';
+@import 'components/footer';

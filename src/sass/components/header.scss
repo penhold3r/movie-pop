@@ -1,0 +1,48 @@
+.header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+
+	.logo {
+		margin: 0;
+
+		a {
+			align-items: center;
+			color: $primary;
+			display: inline-flex;
+			font-size: 1.25rem;
+			text-decoration: none;
+
+			img {
+				width: 50px;
+			}
+
+			span {
+				margin-left: 1rem;
+			}
+		} /* a */
+	} /* .logo */
+
+	.navbar {
+		align-items: center;
+		display: flex;
+
+		&__link {
+			margin: 0 0.5rem;
+
+			.icon {
+				margin-right: 0.5rem;
+				align-self: center;
+			}
+
+			&.active-link {
+				color: $primary;
+			}
+
+			&:hover {
+				background: rgba($primary, 0.1);
+			}
+		} /* __link */
+	} /* .navbar */
+} /* .header */
