@@ -1,22 +1,19 @@
 const initState = {
-	showsList: [
-		{
-			name: 'Tv Show',
-			id: 123,
-		},
-		{
-			name: 'Tv Super Show',
-			id: 456,
-		},
-		{
-			name: 'Awesome Sauce',
-			id: 789,
-		},
-	],
+	showsList: [],
 }
 
 const showsReducer = (state = initState, action) => {
-	return state
+	switch (action.type) {
+		case 'FETCH_SHOWS':
+			console.log('fetching...', action.payload)
+			return {
+				...state,
+				showsList: action.payload,
+			}
+
+		default:
+			return state
+	}
 }
 
 export default showsReducer

@@ -1,9 +1,11 @@
 import React from 'react'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers/rootReducer'
+import thunk from 'redux-thunk'
 
-const store = createStore(rootReducer)
+// create store and use thunk for async calls
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const StoreProvider = ({ children }) => <Provider store={store}>{children}</Provider>
 

@@ -6,7 +6,7 @@ const ShowCard = ({ show }) => {
 		<div className='show-card'>
 			<h3>{show.name}</h3>
 			<Link to={`/show/${show.id}`} className='button'>
-				View
+				View {show.id}
 			</Link>
 		</div>
 	)

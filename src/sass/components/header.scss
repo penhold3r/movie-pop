@@ -13,6 +13,7 @@
 			display: inline-flex;
 			font-size: 1.25rem;
 			text-decoration: none;
+			transition: all 0.3s;
 
 			img {
 				width: 50px;
@@ -20,6 +21,10 @@
 
 			span {
 				margin-left: 1rem;
+			}
+
+			&:hover {
+				color: $secondary;
 			}
 		} /* a */
 	} /* .logo */

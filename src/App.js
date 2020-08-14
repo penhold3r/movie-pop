@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { fetchShows } from './redux/actions/showActions'
 
 import HomePage from './pages/HomePage'
 import ShowsListPage from './pages/ShowsListPage'
 import ShowDetailsPage from './pages/ShowDetailsPage'
 
-const App = () => {
+const App = ({ fetchShows }) => {
+	useEffect(() => {
+		fetchShows()
+	}, [fetchShows])
+
 	return (
 		<BrowserRouter>
 			<Switch>
@@ -17,4 +25,8 @@ const App = () => {
 	)
 }
 
-export default App
+App.propTypes = {
+	fetchShows: PropTypes.func.isRequired,
+}
+
+export default connect(null, { fetchShows })(App)
