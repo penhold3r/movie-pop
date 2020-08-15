@@ -15,7 +15,11 @@ const ShowsListPage = ({ shows }) => {
 				<h2 className='page-title'>All the shows</h2>
 
 				<div className='shows-grid'>
-					{shows && shows.map(({ show }) => <ShowCard key={show.id} show={show} />)}
+					{shows ? (
+						shows.map(({ show }) => <ShowCard key={show.id} show={show} />)
+					) : (
+						<div className='loading'>Loading...</div>
+					)}
 				</div>
 			</section>
 		</Layout>

@@ -6,29 +6,40 @@ import Layout from '../components/Layout'
 import GoBack from '../components/GoBack'
 
 const ShowDetailsPage = ({ match, shows }) => {
+	// get show id from url params
 	const { id } = match.params
+	// filter show from store by id
 	const [filteredShow] = shows && shows.filter(({ show }) => show.id.toString() === id)
+	// destructure show if object is read
 	const { show } = filteredShow || {}
 
+	// check if show has poster, otherwise use placeholder
 	const image =
 		show && show.image
 			? show.image.original
 			: 'https://via.placeholder.com/680x1000?text=MoviePop'
 
+	// star rating logic
 	const stars = []
 	let rating
 	if (show && show.rating.average) {
+		// round rating to 0 or 0.5
 		rating = (Math.round(show.rating.average * 2) / 2).toFixed(1)
 
+		// integer reference
 		const int = Math.floor(rating)
+		// check if has decimal point
 		const isDecimal = rating % 1 !== 0
 
 		for (let i = 1; i <= 10; i++) {
 			if (i <= int) {
+				// if value is less than loop push filled star
 				stars.push(<i key={i} className='icon ri-star-fill'></i>)
 			} else if (isDecimal && i === int + 1) {
+				// if is decimal and integer part is covered push half star
 				stars.push(<i key={i} className='icon ri-star-half-line'></i>)
 			} else {
+				// finally, push empty star to complete loop
 				stars.push(<i key={i} className='icon ri-star-line'></i>)
 			}
 		}
