@@ -1,0 +1,40 @@
+@mixin at-root($sel) {
+	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
+		@content;
+	}
+}
+
+/* ---------------------------------------
+*
+* Placeholder selector
+*
+*/
+@mixin placeholder {
+	@include at-root('::-webkit-input-placeholder') {
+		@content;
+	}
+	@include at-root(':-moz-placeholder') {
+		@content;
+	}
+	@include at-root('::-moz-placeholder') {
+		@content;
+	}
+	@include at-root(':-ms-input-placeholder') {
+		@content;
+	}
+}
+/* ---------------------------------------
+*
+* Media queries
+*
+*/
+@mixin tablet($width: 640px) {
+	@media screen and (min-width: $width) {
+		@content;
+	}
+}
+@mixin desktop($width: 1100px) {
+	@media screen and (min-width: $width) {
+		@content;
+	}
+}

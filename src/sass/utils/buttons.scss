@@ -1,10 +1,13 @@
 .button {
 	align-content: center;
+	border: none;
 	border-radius: 0.25rem;
 	color: $primary;
 	cursor: pointer;
 	display: inline-flex;
 	justify-content: center;
+	font-family: $main-font;
+	line-height: 1.5rem;
 	padding: 0.5rem 0.75rem;
 	text-decoration: none;
 	transition: all 0.3s;

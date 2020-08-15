@@ -1,4 +1,5 @@
 @import 'includes/variables';
+@import 'includes/mixines';
 @import 'utils/buttons';
 
 *,
@@ -15,7 +16,7 @@ body {
 body {
 	background: $dark;
 	color: $light;
-	font-family: 'Nunito', sans-serif;
+	font-family: $main-font;
 
 	main {
 		display: flex;
@@ -26,6 +27,7 @@ body {
 
 		.container {
 			display: flex;
+			flex-direction: column;
 			flex-grow: 1;
 			padding: 0 1rem;
 		} /* .container */
@@ -34,4 +36,9 @@ body {
 
 @import 'components/header';
 @import 'components/home-page';
+@import 'components/shows-page';
+@import 'components/search';
+@import 'components/show-card';
+@import 'components/show-details';
+@import 'components/go-back';
 @import 'components/footer';

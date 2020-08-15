@@ -1,0 +1,15 @@
+.shows-list {
+	width: 100%;
+
+	.page-title {
+		color: $primary;
+		text-align: center;
+		margin: 3rem 0 2rem;
+	} /* .page-title */
+
+	.shows-grid {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	} /* .shows-grid */
+} /* .shows-list */

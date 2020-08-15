@@ -1,0 +1,128 @@
+.show-details {
+	margin: 2rem 0 0;
+
+	@include tablet {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 2fr 4fr;
+		grid-template-areas:
+			'poster summary'
+			'poster data';
+	}
+
+	.poster {
+		align-self: self-start;
+		border-bottom: 1rem solid $dark;
+		border-left: 1rem solid $dark;
+		border-radius: 0.5rem;
+		float: right;
+		height: auto;
+		overflow: hidden;
+		width: 40%;
+
+		@include tablet {
+			border: none;
+			float: none;
+			grid-area: poster;
+			width: 100%;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+		}
+	} /* .poster */
+
+	.summary {
+		grid-area: summary;
+		margin: 0 0 2rem;
+
+		@include tablet {
+			margin: 0;
+		}
+
+		.show-title {
+			margin: 0 0 1rem;
+			padding: 0 0 1rem;
+			border-bottom: 1px solid $secondary;
+			line-height: 1.1;
+			font-size: 1.25rem;
+
+			@include tablet {
+				font-size: 1.5rem;
+			}
+		} /* .show-title */
+	} /* .summary */
+
+	.show-data {
+		background: rgba($light, 0.1);
+		border-radius: 0.5rem;
+		padding: 1rem;
+		grid-area: data;
+
+		p {
+			font-size: 0.9rem;
+			margin: 0 0 0.5rem;
+
+			@include tablet {
+				font-size: 1rem;
+			}
+
+			&.type,
+			&.status {
+				.value {
+					color: $primary;
+				}
+			}
+		} /* p */
+
+		.genres {
+			margin: 1rem 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+
+			.genre-tag {
+				margin: 0 0.5rem 0.5rem 0;
+				text-transform: uppercase;
+				letter-spacing: 0.1rem;
+				font-size: 0.6rem;
+				padding: 0.25rem 0.5rem;
+				border: 1px solid rgba($primary, 0.75);
+				color: rgba($primary, 0.75);
+				border-radius: 0.25rem;
+
+				@include tablet {
+					font-size: 0.8rem;
+				}
+			}
+		} /* .generes */
+
+		.rating {
+			display: flex;
+
+			.label {
+				font-size: 0.8;
+				letter-spacing: 0.1rem;
+				margin: 0 0.5rem 0 0;
+				text-transform: uppercase;
+			}
+
+			.value {
+				align-items: center;
+				display: flex;
+
+				.stars {
+					display: flex;
+					color: $primary;
+					margin-left: 0.5rem;
+				}
+			}
+		} /* .rating */
+
+		@include tablet {
+			padding: 1.5rem;
+		}
+	} /* .show-data */
+}
