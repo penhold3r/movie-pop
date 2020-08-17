@@ -29,6 +29,7 @@ body {
 			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
+			justify-content: center;
 			padding: 0 1rem;
 		} /* .container */
 	} /* main */
@@ -41,4 +42,5 @@ body {
 @import 'components/show-card';
 @import 'components/show-details';
 @import 'components/go-back';
+@import 'components/loading';
 @import 'components/footer';

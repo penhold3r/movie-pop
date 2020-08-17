@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import imageLoaded from '../utils/image-loaded'
+
 import Layout from '../components/Layout'
 import GoBack from '../components/GoBack'
+import Rating from '../components/Rating'
+import Loading from '../components/Loading'
 
 const ShowDetailsPage = ({ match, shows }) => {
 	// get show id from url params
@@ -13,49 +17,36 @@ const ShowDetailsPage = ({ match, shows }) => {
 	// destructure show if object is read
 	const { show } = filteredShow || {}
 
+	// default string for when summary is not provided
+	const noSummary = 'Sorry, there is no description for this show.'
+
 	// check if show has poster, otherwise use placeholder
 	const image =
 		show && show.image
 			? show.image.original
 			: 'https://via.placeholder.com/680x1000?text=MoviePop'
 
-	// star rating logic
-	const stars = []
-	let rating
-	if (show && show.rating.average) {
-		// round rating to 0 or 0.5
-		rating = (Math.round(show.rating.average * 2) / 2).toFixed(1)
-
-		// integer reference
-		const int = Math.floor(rating)
-		// check if has decimal point
-		const isDecimal = rating % 1 !== 0
-
-		for (let i = 1; i <= 10; i++) {
-			if (i <= int) {
-				// if value is less than loop push filled star
-				stars.push(<i key={i} className='icon ri-star-fill'></i>)
-			} else if (isDecimal && i === int + 1) {
-				// if is decimal and integer part is covered push half star
-				stars.push(<i key={i} className='icon ri-star-half-line'></i>)
-			} else {
-				// finally, push empty star to complete loop
-				stars.push(<i key={i} className='icon ri-star-line'></i>)
-			}
-		}
-	}
+	// ref to img element callbak
+	const imageRef = useCallback(img => {
+		img && imageLoaded(img, () => img.classList.add('loaded'))
+	}, [])
 
 	return (
 		<Layout pageTitle={show ? show.name : ''}>
 			<GoBack />
-			{show ? (
+			{!show ? (
+				<Loading />
+			) : (
 				<section className='show-details'>
 					<div className='poster'>
-						<img src={image} alt='' />
+						<img src={image} alt={show.name} ref={imageRef} />
 					</div>
 					<div className='summary'>
 						<h2 className='show-title'>{show.name}</h2>
-						<div className='sumary-text' dangerouslySetInnerHTML={{ __html: show.summary }} />
+						<div
+							className='sumary-text'
+							dangerouslySetInnerHTML={{ __html: show.summary || noSummary }}
+						/>
 					</div>
 					<div className='show-data'>
 						<p className='type'>
@@ -75,19 +66,17 @@ const ShowDetailsPage = ({ match, shows }) => {
 								))}
 							</ul>
 						)}
-						{rating && (
+						{show.rating.average && (
 							<div className='rating'>
 								<p className='label'>Rating:</p>
-								<p className='value'>
-									<span>{rating}</span>
-									<span className='stars'>{stars}</span>
-								</p>
+								<div className='value'>
+									<p>{show.rating.average}</p>
+									<Rating className='stars' value={show.rating.average} />
+								</div>
 							</div>
 						)}
 					</div>
 				</section>
-			) : (
-				<div className='loading'>Loading...</div>
 			)}
 		</Layout>
 	)

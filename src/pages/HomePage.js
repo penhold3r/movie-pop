@@ -1,6 +1,7 @@
 import React from 'react'
+
 import Layout from '../components/Layout'
-import { Link } from 'react-router-dom'
+import Button from '../components/Button'
 
 const HomePage = () => {
 	return (
@@ -10,10 +11,10 @@ const HomePage = () => {
 					<h2 className='hero__title'>Welcome to MoviePop</h2>
 					<h3 className='hero__subtitle'>Star Wars Edition</h3>
 					<p className='hero__lead'>Browse and search every star wars tv show ever!</p>
-					<Link to='/shows' className='button button--secondary'>
+					<Button to='/shows' variant='secondary'>
 						<span>Let's go!</span>
 						<i className='icon ri-arrow-right-fill'></i>
-					</Link>
+					</Button>
 				</div>
 			</section>
 		</Layout>

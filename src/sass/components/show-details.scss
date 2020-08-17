@@ -11,25 +11,37 @@
 	}
 
 	.poster {
+		background: rgba($secondary, 0.1);
 		align-self: self-start;
-		border-bottom: 1rem solid $dark;
-		border-left: 1rem solid $dark;
+		margin: 0 0 1rem 1rem;
 		border-radius: 0.5rem;
 		float: right;
 		height: auto;
 		overflow: hidden;
+		min-width: 40%;
 		width: 40%;
 
 		@include tablet {
 			border: none;
 			float: none;
+			margin: 0;
 			grid-area: poster;
 			width: 100%;
 		}
 
 		img {
 			display: block;
+			padding-top: 150%;
+			height: 0;
+			opacity: 0;
+			transition: opacity 0.4s;
 			width: 100%;
+
+			&.loaded {
+				padding: 0;
+				height: auto;
+				opacity: 1;
+			}
 		}
 	} /* .poster */
 
@@ -47,9 +59,11 @@
 			border-bottom: 1px solid $secondary;
 			line-height: 1.1;
 			font-size: 1.25rem;
+			width: calc(60% - 1rem);
 
 			@include tablet {
 				font-size: 1.5rem;
+				width: 100%;
 			}
 		} /* .show-title */
 	} /* .summary */
@@ -57,24 +71,23 @@
 	.show-data {
 		background: rgba($light, 0.1);
 		border-radius: 0.5rem;
+		clear: both;
 		padding: 1rem;
 		grid-area: data;
 
-		p {
+		.type,
+		.status {
 			font-size: 0.9rem;
 			margin: 0 0 0.5rem;
+
+			.value {
+				color: $primary;
+			}
 
 			@include tablet {
 				font-size: 1rem;
 			}
-
-			&.type,
-			&.status {
-				.value {
-					color: $primary;
-				}
-			}
-		} /* p */
+		} /* type, status */
 
 		.genres {
 			margin: 1rem 0;
@@ -94,7 +107,7 @@
 				border-radius: 0.25rem;
 
 				@include tablet {
-					font-size: 0.8rem;
+					font-size: 0.7rem;
 				}
 			}
 		} /* .generes */
@@ -103,10 +116,16 @@
 			display: flex;
 
 			.label {
-				font-size: 0.8;
+				font-size: 0.8rem;
 				letter-spacing: 0.1rem;
 				margin: 0 0.5rem 0 0;
 				text-transform: uppercase;
+			}
+
+			p {
+				font-size: 0.8rem;
+				height: 1rem;
+				margin: 0;
 			}
 
 			.value {

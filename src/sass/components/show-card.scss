@@ -10,8 +10,21 @@
 	transition: all 0.3s;
 
 	&__image {
-		display: block;
+		background: rgba($secondary, 0.1);
+		justify-self: center;
+		min-height: 290px;
 		width: 100%;
+
+		img {
+			width: 100%;
+			display: block;
+			transition: opacity 0.4s;
+			opacity: 0;
+
+			&.loaded {
+				opacity: 1;
+			}
+		}
 	} /* __image */
 
 	&__title {

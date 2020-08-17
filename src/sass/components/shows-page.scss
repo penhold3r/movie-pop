@@ -1,11 +1,25 @@
 .shows-list {
+	margin: 0 0 auto;
 	width: 100%;
 
-	.page-title {
-		color: $primary;
-		text-align: center;
+	.shows-list-header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		margin: 3rem 0 2rem;
-	} /* .page-title */
+
+		.page-title {
+			color: $primary;
+			text-align: center;
+			margin: 0 1rem 0 0;
+		} /* .page-title */
+
+		.button {
+			.icon {
+				margin-right: 0.5rem;
+			}
+		}
+	} /* .shows-grid-header */
 
 	.shows-grid {
 		display: grid;

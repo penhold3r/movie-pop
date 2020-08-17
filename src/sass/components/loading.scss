@@ -1,0 +1,24 @@
+.loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	flex-grow: 1;
+	color: $secondary;
+
+	.spinner {
+		animation: spin 1.5s ease-in-out infinite;
+		font-size: 2rem;
+	}
+
+	.text {
+		margin-left: 1rem;
+		font-size: 1.5rem;
+	}
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

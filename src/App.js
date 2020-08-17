@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { fetchShows } from './redux/actions/showActions'
 
+import RestoreScroll from './components/RestoreScroll'
 import HomePage from './pages/HomePage'
 import ShowsListPage from './pages/ShowsListPage'
 import ShowDetailsPage from './pages/ShowDetailsPage'
@@ -16,6 +17,8 @@ const App = ({ fetchShows }) => {
 
 	return (
 		<BrowserRouter>
+			<RestoreScroll />
+
 			<Switch>
 				<Route exact path='/' component={HomePage} />
 				<Route path='/shows' component={ShowsListPage} />

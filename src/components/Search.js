@@ -1,18 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Button from './Button'
 
-const Search = () => {
+const Search = ({ shows, setSearchResults }) => {
+	const [searchValue, setSearchValue] = useState('')
+
+	const handleSubmit = e => {
+		e.preventDefault()
+
+		const results = shows.filter(({ show }) => show.name.toLowerCase().includes(searchValue))
+		setSearchValue('')
+		setSearchResults({ searchValue, results })
+	}
+
 	return (
 		<div className='search-widget'>
-			<form action='' className='search-form'>
+			<form className='search-form' onSubmit={handleSubmit}>
 				<input
 					type='text'
 					name='search'
 					placeholder='Filter by show name'
 					aria-label='Search'
+					value={searchValue}
+					onChange={e => setSearchValue(e.target.value)}
 				/>
-				<button type='submit' className='button button--secondary'>
-					Search shows
-				</button>
+				<Button type='submit' variant='secondary'>
+					<span>Search</span>
+				</Button>
 			</form>
 		</div>
 	)
