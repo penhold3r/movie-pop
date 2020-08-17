@@ -6,7 +6,7 @@
 
 /* ---------------------------------------
 *
-* Placeholder selector
+* PLACEHOLDER SELECTOR
 *
 */
 @mixin placeholder {
@@ -25,7 +25,7 @@
 }
 /* ---------------------------------------
 *
-* Media queries
+* MEDIA QUERIES
 *
 */
 @mixin tablet($width: 640px) {
@@ -37,4 +37,28 @@
 	@media screen and (min-width: $width) {
 		@content;
 	}
+}
+
+/***********************************
+*
+* SCROLLBAR COLOR
+*
+*/
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+	// Webkit
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// Firefox
+	scrollbar-color: $foreground-color $background-color;
 }

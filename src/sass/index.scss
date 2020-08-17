@@ -10,6 +10,8 @@
 
 html,
 body {
+	@include scrollbars(14px, $secondary, rgba($secondary, 0.1));
+
 	margin: 0;
 }
 

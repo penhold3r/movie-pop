@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import Button from './Button'
 
 const Search = ({ shows, setSearchResults }) => {
@@ -7,8 +8,11 @@ const Search = ({ shows, setSearchResults }) => {
 	const handleSubmit = e => {
 		e.preventDefault()
 
+		// filter by partial match in show's name
 		const results = shows.filter(({ show }) => show.name.toLowerCase().includes(searchValue))
+		// clear form
 		setSearchValue('')
+		// pass results to parent
 		setSearchResults({ searchValue, results })
 	}
 
@@ -29,6 +33,11 @@ const Search = ({ shows, setSearchResults }) => {
 			</form>
 		</div>
 	)
+}
+
+Search.propTypes = {
+	shows: PropTypes.array.isRequired,
+	setSearchResults: PropTypes.func.isRequired,
 }
 
 export default Search
