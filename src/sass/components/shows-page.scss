@@ -5,8 +5,13 @@
 	.shows-list-header {
 		display: flex;
 		justify-content: center;
+		flex-direction: column;
 		align-items: center;
 		margin: 3rem 0 2rem;
+
+		@include tablet {
+			flex-direction: row;
+		}
 
 		.page-title {
 			color: $primary;
@@ -15,6 +20,12 @@
 		} /* .page-title */
 
 		.button {
+			margin: 2rem 0 0;
+
+			@include tablet {
+				margin: 0;
+			}
+
 			.icon {
 				margin-right: 0.5rem;
 			}
