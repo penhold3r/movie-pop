@@ -1,0 +1,31 @@
+.not-found {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	&__title {
+		text-align: center;
+		color: $primary;
+		font-size: 4rem;
+		margin: 0 0 1rem;
+
+		@include tablet {
+			font-size: 6rem;
+		}
+	} /* __title */
+
+	&__text {
+		text-align: center;
+		color: $secondary;
+		font-size: 1.5rem;
+		margin: 0 0 2rem;
+
+		@include tablet {
+			font-size: 1.75rem;
+		}
+	} /* __text */
+
+	&__button {
+		margin: auto;
+	} /* __button */
+} /* .not-found */

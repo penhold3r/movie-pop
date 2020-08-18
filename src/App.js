@@ -9,6 +9,7 @@ import RestoreScroll from './components/RestoreScroll'
 import HomePage from './pages/HomePage'
 import ShowsListPage from './pages/ShowsListPage'
 import ShowDetailsPage from './pages/ShowDetailsPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 const App = ({ fetchShows }) => {
 	useEffect(() => {
@@ -23,6 +24,7 @@ const App = ({ fetchShows }) => {
 				<Route exact path='/' component={HomePage} />
 				<Route path='/shows' component={ShowsListPage} />
 				<Route path='/show/:id' component={ShowDetailsPage} />
+				<Route component={NotFoundPage} />
 			</Switch>
 		</BrowserRouter>
 	)

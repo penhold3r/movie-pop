@@ -8,12 +8,14 @@ const Search = ({ shows, setSearchResults }) => {
 	const handleSubmit = e => {
 		e.preventDefault()
 
-		// filter by partial match in show's name
-		const results = shows.filter(({ show }) => show.name.toLowerCase().includes(searchValue))
-		// clear form
-		setSearchValue('')
-		// pass results to parent
-		setSearchResults({ searchValue, results })
+		if (searchValue) {
+			// filter by partial match in show's name
+			const results = shows.filter(({ show }) => show.name.toLowerCase().includes(searchValue))
+			// pass results to parent
+			setSearchResults({ searchValue, results })
+			// clear form
+			setSearchValue('')
+		}
 	}
 
 	return (

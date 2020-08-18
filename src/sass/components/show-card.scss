@@ -12,8 +12,24 @@
 	&__image {
 		background: rgba($secondary, 0.1);
 		justify-self: center;
+		position: relative;
 		min-height: 290px;
 		width: 100%;
+
+		&.loading {
+			&:before {
+				align-items: center;
+				color: $secondary;
+				content: 'Loading image...';
+				display: flex;
+				height: 100%;
+				justify-content: center;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+		}
 
 		img {
 			width: 100%;

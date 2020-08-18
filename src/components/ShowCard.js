@@ -13,7 +13,13 @@ const ShowCard = ({ show }) => {
 
 	// ref to img element callbak
 	const imageRef = useCallback(img => {
-		img && imageLoaded(img, () => img.classList.add('loaded'))
+		if (img) {
+			img.parentNode.classList.add('loading')
+			imageLoaded(img, () => {
+				img.parentNode.classList.remove('loading')
+				img.classList.add('loaded')
+			})
+		}
 	}, [])
 
 	return (

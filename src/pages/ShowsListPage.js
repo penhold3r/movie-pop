@@ -24,14 +24,16 @@ const ShowsListPage = ({ shows }) => {
 							<h2 className='page-title'>
 								{searchResults.results.length > 0
 									? `Results for: "${searchResults.searchValue}"`
+									: searchResults.results.length === 0 && searchResults.searchValue
+									? `Sorry, we couldn't find anything for: "${searchResults.searchValue}"`
 									: 'All the shows'}
 							</h2>
-							{searchResults.results.length > 0 && (
+							{searchResults.searchValue && (
 								<Button
 									variant='secondary'
 									onClick={() => setSearchResults({ searchValue: '', results: [] })}>
 									<i className='icon ri-delete-back-2-fill'></i>
-									<span>Clear Results</span>
+									<span>Clear Search</span>
 								</Button>
 							)}
 						</div>
@@ -41,6 +43,8 @@ const ShowsListPage = ({ shows }) => {
 								? searchResults.results.map(({ show }) => (
 										<ShowCard key={show.id} show={show} />
 								  ))
+								: searchResults.results.length === 0 && searchResults.searchValue
+								? null
 								: shows.map(({ show }) => <ShowCard key={show.id} show={show} />)}
 						</div>
 					</>
