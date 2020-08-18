@@ -1,11 +1,13 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+
+import { connect } from 'react-redux'
+import { unSaveShow } from '../redux/actions/showActions'
 
 import imageLoaded from '../utils/image-loaded'
 import Button from './Button'
 
-const ShowCard = ({ show }) => {
+const FavoriteCard = ({ show, unSaveShow }) => {
 	// check if show has poster, otherwise use placeholder
 	const image = show.image
 		? show.image.medium
@@ -23,23 +25,32 @@ const ShowCard = ({ show }) => {
 	}, [])
 
 	return (
-		<Link to={`/show/${show.id}`} className='show-card'>
+		<div className='favorite-card'>
 			{show.saved && (
 				<div className='saved'>
 					<i className='icon ri-heart-fill'></i>
 				</div>
 			)}
-			<div className='show-card__image'>
+			<div className='favorite-card__image'>
 				<img src={image} alt={show.name} ref={imageRef} />
 			</div>
-			<h3 className='show-card__title'>{show.name}</h3>
-			<Button className='show-card__button'>View More</Button>
-		</Link>
+			<div className='favorite-card__body'>
+				<h3 className='favorite-title'>{show.name}</h3>
+				<Button variant='secondary' className='unsave-btn' onClick={() => unSaveShow(show.id)}>
+					<i className='icon ri-heart-line'></i>
+					<span>Unsave</span>
+				</Button>
+				<Button to={`/show/${show.id}`} variant='primary' className='link-btn'>
+					View More
+				</Button>
+			</div>
+		</div>
 	)
 }
 
-ShowCard.propTypes = {
+FavoriteCard.propTypes = {
 	show: PropTypes.object.isRequired,
+	unSaveShow: PropTypes.func.isRequired,
 }
 
-export default ShowCard
+export default connect(null, { unSaveShow })(FavoriteCard)

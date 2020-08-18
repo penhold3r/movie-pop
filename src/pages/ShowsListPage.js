@@ -40,12 +40,10 @@ const ShowsListPage = ({ shows }) => {
 
 						<div className='shows-grid'>
 							{searchResults.results.length > 0
-								? searchResults.results.map(({ show }) => (
-										<ShowCard key={show.id} show={show} />
-								  ))
+								? searchResults.results.map(show => <ShowCard key={show.id} show={show} />)
 								: searchResults.results.length === 0 && searchResults.searchValue
 								? null
-								: shows.map(({ show }) => <ShowCard key={show.id} show={show} />)}
+								: shows.map(show => <ShowCard key={show.id} show={show} />)}
 						</div>
 					</>
 				)}

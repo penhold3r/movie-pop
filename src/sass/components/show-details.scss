@@ -1,5 +1,6 @@
 .show-details {
 	margin: 2rem 0 0;
+	position: relative;
 
 	@include tablet {
 		display: grid;
@@ -9,6 +10,16 @@
 			'poster summary'
 			'poster data';
 	}
+
+	.fav-btn {
+		position: absolute;
+		top: -4.5rem;
+		right: 0;
+
+		.icon {
+			margin-right: 0.5rem;
+		}
+	} /* .fav-btn */
 
 	.poster {
 		align-self: self-start;

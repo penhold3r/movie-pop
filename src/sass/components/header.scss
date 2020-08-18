@@ -7,6 +7,7 @@
 	padding: 0.5rem 1rem;
 	position: sticky;
 	top: 0;
+	z-index: 99;
 
 	@include tablet {
 		box-shadow: none;
@@ -76,6 +77,22 @@
 
 			&:hover {
 				background: rgba($primary, 0.1);
+			}
+
+			&.faves {
+				.count {
+					margin-left: 0.25rem;
+					background: $secondary;
+					color: white;
+					font-size: 0.7rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					height: 1rem;
+					width: 1rem;
+					line-height: 1rem;
+					border-radius: 50%;
+				}
 			}
 		} /* __link */
 	} /* .navbar */

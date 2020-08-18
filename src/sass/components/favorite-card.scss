@@ -1,30 +1,15 @@
-.show-card {
+.favorite-card {
 	background: rgba($light, 0.1);
 	border-radius: 0.5rem;
 	box-shadow: 0 2px 8px rgba(#000, 0.5);
 	display: flex;
-	flex-direction: column;
 	overflow: hidden;
-	position: relative;
-	text-align: center;
-	text-decoration: none;
-	transition: all 0.3s;
-
-	.saved {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		color: $primary;
-		text-shadow: 0 2px 8px rgba(#000, 0.5);
-		z-index: 1;
-	}
 
 	&__image {
 		background: rgba($secondary, 0.1);
 		justify-self: center;
 		position: relative;
-		min-height: 290px;
-		width: 100%;
+		width: 33%;
 
 		&.loading {
 			&:before {
@@ -44,6 +29,8 @@
 		img {
 			width: 100%;
 			display: block;
+			height: 100%;
+			object-fit: cover;
 			transition: opacity 0.4s;
 			opacity: 0;
 
@@ -53,19 +40,25 @@
 		}
 	} /* __image */
 
-	&__title {
-		color: $light;
-		margin: 0;
-		padding: 1rem;
-		text-align: center;
-	} /* __title */
+	&__body {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		padding: 1.5rem;
 
-	&__button {
-		margin: auto auto 1.5rem;
-	} /* __button */
+		.favorite-title {
+			margin: 0 0 2rem;
+			width: 100%;
+		}
 
-	&:hover {
-		background: rgba($light, 0.2);
-		box-shadow: 0 4px 15px rgba(#000, 0.7);
-	} /* hover */
+		.button {
+			margin: auto 0 0 1rem;
+
+			&.unsave-btn {
+				.icon {
+					margin-right: 0.5rem;
+				}
+			}
+		}
+	}
 }

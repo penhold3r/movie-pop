@@ -1,0 +1,32 @@
+.favorites {
+	margin: 0 0 auto;
+	padding: 2rem 0 0;
+
+	&__title {
+		color: $primary;
+		margin: 0 0 3rem;
+		text-align: center;
+	} /* __title */
+
+	&__list {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 1fr;
+
+		@include tablet {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.no-favorites {
+		font-size: 1.5rem;
+		text-align: center;
+
+		.icon {
+			color: $primary;
+			display: block;
+			font-size: 2rem;
+			margin: 0.5rem;
+		}
+	} /* .no-favorites. */
+}

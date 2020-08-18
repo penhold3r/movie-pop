@@ -38,12 +38,20 @@ body {
 } /* body */
 
 @import 'components/header';
+
 @import 'components/home-page';
+
 @import 'components/shows-page';
 @import 'components/search';
 @import 'components/show-card';
 @import 'components/show-details';
 @import 'components/go-back';
+
+@import 'components/favorites-page';
+@import 'components/favorite-card';
+
 @import 'components/loading';
+
 @import 'components/footer';
+
 @import 'components/not-found';
