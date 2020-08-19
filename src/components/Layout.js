@@ -30,7 +30,7 @@ const Layout = ({ pageTitle, children }) => {
 
 					{
 						name: 'theme-color',
-						content: '#ff6f00',
+						content: '#071931',
 					},
 				]}
 				link={[
