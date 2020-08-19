@@ -10,7 +10,9 @@ const Search = ({ shows, setSearchResults }) => {
 
 		if (searchValue) {
 			// filter by partial match in show's name
-			const results = shows.filter(show => show.name.toLowerCase().includes(searchValue))
+			const results = shows.filter(show =>
+				show.name.toLowerCase().includes(searchValue.toLowerCase())
+			)
 			// pass results to parent
 			setSearchResults({ searchValue, results })
 			// clear form

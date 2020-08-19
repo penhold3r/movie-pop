@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
+import { Redirect } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { saveShow, unSaveShow } from '../redux/actions/showActions'
@@ -16,9 +17,9 @@ const ShowDetailsPage = ({ match, shows, saveShow, unSaveShow }) => {
 	// get show id from url params
 	const { id } = match.params
 	// filter show from store by id
-	const [filteredShow] = shows && shows.filter(show => show.id.toString() === id)
+	const filteredShow = shows && shows.filter(show => show.id.toString() === id)
 	// destructure show if object is read
-	const show = filteredShow || null
+	const show = filteredShow[0] || null
 
 	// default string for when summary is not provided
 	const noSummary = 'Sorry, there is no description for this show.'
@@ -43,7 +44,9 @@ const ShowDetailsPage = ({ match, shows, saveShow, unSaveShow }) => {
 	return (
 		<Layout pageTitle={show ? show.name : ''}>
 			<GoBack />
-			{!show ? (
+			{!show && shows.length > 0 ? (
+				<Redirect to='/404' /> // wrong id
+			) : !show ? (
 				<Loading />
 			) : (
 				<section className='show-details'>
