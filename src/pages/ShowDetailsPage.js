@@ -8,14 +8,17 @@ import Layout from '../components/Layout'
 import GoBack from '../components/GoBack'
 import Rating from '../components/Rating'
 import Loading from '../components/Loading'
+import { Redirect } from 'react-router-dom'
 
 const ShowDetailsPage = ({ match, shows }) => {
 	// get show id from url params
 	const { id } = match.params
+
 	// filter show from store by id
-	const [filteredShow] = shows && shows.filter(({ show }) => show.id.toString() === id)
+	const filteredShow = shows.length && shows.filter(({ show }) => show.id.toString() === id)
+
 	// destructure show if object is read
-	const { show } = filteredShow || {}
+	const { show } = filteredShow[0] || []
 
 	// default string for when summary is not provided
 	const noSummary = 'Sorry, there is no description for this show.'
@@ -40,7 +43,9 @@ const ShowDetailsPage = ({ match, shows }) => {
 	return (
 		<Layout pageTitle={show ? show.name : ''}>
 			<GoBack />
-			{!show ? (
+			{!show && shows.length > 0 ? (
+				<Redirect to='/404' /> // wrong id
+			) : !show ? (
 				<Loading />
 			) : (
 				<section className='show-details'>
